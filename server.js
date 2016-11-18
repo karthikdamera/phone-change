@@ -9,20 +9,6 @@ app.set('port', process.env.PORT || 5000);
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-var request = require("request");
-
-var options = { method: 'GET',
-  url: 'https://phone-change-contact.herokuapp.com/',
-  headers: 
-   { 'postman-token': '27da0bb7-b4f2-a447-a8c2-223802829005',
-     'cache-control': 'no-cache',
-     'content-type': 'application/x-www-form-urlencoded' } };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
 
 
 app.post('/update', function(req, res) {
