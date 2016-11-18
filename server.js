@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 var url = 'https://phone-change-contact.herokuapp.com/';
 
-http.get(url, function(res){
+app.get(url, function(res){
     var body = '';
 
     res.on('data', function(chunk){
