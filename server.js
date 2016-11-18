@@ -9,20 +9,21 @@ app.set('port', process.env.PORT || 5000);
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-var request = require("request")
+var request = require("request");
 
-var url = 'https://phone-change-contact.herokuapp.com/';
+var options = { method: 'GET',
+  url: 'https://phone-change-contact.herokuapp.com/',
+  headers: 
+   { 'postman-token': '27da0bb7-b4f2-a447-a8c2-223802829005',
+     'cache-control': 'no-cache',
+     'content-type': 'application/x-www-form-urlencoded' } };
 
-request({
-    url: url,
-    json: true
-}, function (error, response, body) {
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
 
-    if (!error && response.statusCode === 200) {
-        console.log(body) // Print the json response
-        alert(body);
-    }
-})
+  console.log(body);
+});
+
 
 app.post('/update', function(req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
