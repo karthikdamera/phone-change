@@ -24,8 +24,7 @@
                 var lastName = $("#lastName").val();
                 var email = $("#email").val();
                 var phone = $("#phone").val();
-                var herokuinsert = $("#herokuinsert").val();
-                if (firstName.length == 0 || lastName.length == 0 || phone.length == 0) {
+                if (firstName.length == 0 || lastName.length == 0 || email.length == 0 || phone.length == 0) {
                     errorMessage.text("All of the fields are required.");
                     error.show();
                 }
@@ -37,8 +36,7 @@
                             firstName: firstName,
                             lastName: lastName,
                             email: email,
-                            phone: phone,
-                            herokuinsert__c: herokuinsert
+                            phone: phone
                         }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -47,7 +45,6 @@
                             $("#lastName").val("");
                             $("#email").val("");
                             $("#phone").val("");
-                            $("#herokuinsert").val("");
                             $("#messageMessage").text("Record updated!");
                             $("#message").show();
                         },
@@ -87,15 +84,11 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="For verification">
+                        <input type="email" class="form-control" id="email" placeholder="For verification" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone</label>
                         <input type="tel" class="form-control" id="phone" placeholder="New Phone Number" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="herokuinsert">Phone</label>
-                        <input type="checkbox" class="form-control" id="herokuinsert">
                     </div>
                 </div>
                 <div class="panel-footer">
